@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "yussef",
+    "password": "Lifeisjust-5",
+    "database": "forum",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "yussef",
+    "password": "Lifeisjust-5",
+    "database": "forum-test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "yussef",
+    "password": "Lifeisjust-5",
+    "database": "forum-prod",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
