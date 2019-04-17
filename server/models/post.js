@@ -7,7 +7,9 @@ module.exports = (sequelize, DataTypes) => {
     },
 
     creation_date: {
-      type: DataTypes.TIME
+      allowNull: false,
+      type: DataTypes.TIME,
+      defaultValue: DataTypes.NOW
 
   }, });
   Post.associate = function(models) {

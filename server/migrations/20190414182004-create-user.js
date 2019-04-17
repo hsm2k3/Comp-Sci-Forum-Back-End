@@ -11,15 +11,18 @@ module.exports = {
       
       email: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       username: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       is_admin: {
         type: Sequelize.BOOLEAN,
-        defaultValue: false
+        defaultValue: false,
+        allowNull: false,
       },
       first_name: {
         type: Sequelize.STRING
@@ -29,10 +32,11 @@ module.exports = {
       },
       date_joined: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: false,
+        defaultValue: Sequelize.NOW
       },
-      last_ative: {
-        type: Sequelize.TIME
+      last_active: {
+        type: Sequelize.DATE
       },
       picture: {
         type: Sequelize.BLOB

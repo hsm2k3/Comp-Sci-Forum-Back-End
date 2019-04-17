@@ -9,12 +9,20 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
+      },
+
+      content: {
+        type: Sequelize.TEXT,
+        allowNull: false
       },
       
       creation_date: {
-        type: Sequelize.TIME,
-        allowNull: false
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.NOW
       },
 
       is_locked: {
@@ -40,10 +48,21 @@ module.exports = {
 
       user_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'Users',
           key: 'id',
           as: 'user_id'
+        }
+      },
+      
+      section_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Sections',
+          key: 'id',
+          as: 'section_id'
         }
       }
     });

@@ -9,13 +9,17 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
-        type: Sequelize.STRING
+      	allowNull: false,
+        type: Sequelize.STRING,
+        unique: true
       },
       description: {
         type: Sequelize.TEXT
       },
       creation_date: {
-        type: Sequelize.TIME
+      	allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW
       },
       
       createdAt: {
@@ -26,8 +30,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
+
       user_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'Users',
           key: 'id',

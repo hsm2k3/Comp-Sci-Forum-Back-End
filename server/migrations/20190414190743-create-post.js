@@ -14,7 +14,10 @@ module.exports = {
         type: Sequelize.TEXT
       },
       creation_date: {
-        type: Sequelize.TIME
+        type: Sequelize.TIME,
+        allowNull: false,
+        defaultValue: Sequelize.NOW
+
       },
       createdAt: {
         allowNull: false,
@@ -27,6 +30,7 @@ module.exports = {
       
       thread_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         OnDelete: 'CASCADE',
         references: {
           model: 'Threads',
@@ -37,6 +41,7 @@ module.exports = {
 
       user_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'Users',
           key: 'id',

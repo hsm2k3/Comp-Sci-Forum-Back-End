@@ -4,15 +4,20 @@ module.exports = (sequelize, DataTypes) => {
 
     email: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
+
     username: {
      type: DataTypes.STRING,
-     allowNull: false
+     allowNull: false,
+     unique: true
    },
+   
     is_admin: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false
+      defaultValue: false,
+      allowNull: false,
     },
     first_name: { 
       type: DataTypes.STRING,
@@ -22,10 +27,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     date_joined: {
     type: DataTypes.DATE,
-    allowNull: false
+    allowNull: false,
+    defaultValue: DataTypes.NOW
    },
     last_active: {
-    type: DataTypes.TIME,
+    type: DataTypes.DATE,
   },
     picture: {
       type: DataTypes.BLOB,

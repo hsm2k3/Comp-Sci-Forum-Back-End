@@ -3,12 +3,19 @@ module.exports = (sequelize, DataTypes) => {
   const Thread = sequelize.define('Thread', {
     title: {
       type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+
+    content: {
+      type: DataTypes.TEXT,
       allowNull: false
     },
 
     creation_date: {
-      type: DataTypes.TIME,
-      allowNull: false
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW
     },
     is_locked: {
       type: DataTypes.BOOLEAN,
@@ -22,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     }
-  }, {});
+  }, );
   Thread.associate = function(models) {
     // associations can be defined here
     Thread.hasMany(models.Post, {
