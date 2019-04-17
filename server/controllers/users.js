@@ -56,7 +56,7 @@ module.exports = {
 		return user
 		.update({
 			picture: req.body.picture || user.picture,
-			is_admin: req.body.is_admin || user!.is_admin,
+			is_admin: req.body.is_admin || user.is_admin,
 		})
 		.then(() => res.status(200).send(section))
 		.catch((error) => res.status(400).send(error));

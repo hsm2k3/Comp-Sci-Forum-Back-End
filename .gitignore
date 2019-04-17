@@ -26,3 +26,4 @@ yarn-error.log*
 
 # mike added
 .idea/*
+/server/config/config.json
