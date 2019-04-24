@@ -1,5 +1,7 @@
 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
+
   const Section = sequelize.define('Section', {
     title: {
       allowNull: false,
@@ -13,9 +15,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TIME,
       allowNull: false,
       defaultValue: DataTypes.NOW
-    },
-  }, );
+    }
+  });
+
   Section.associate = function(models) {
+
     // associations can be defined here
     Section.hasMany(models.Thread, {
       foreignKey: 'section_id',
@@ -26,6 +30,9 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'user_id',
       allowNull: false    
     });
+
   };
+
   return Section;
+
 };

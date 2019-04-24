@@ -1,4 +1,4 @@
-const UserController = require('../controllers').users;
+const UserController = require('../controllers/index_controllers').users;
 
 
 const user_routes = (app) => {

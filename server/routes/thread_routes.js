@@ -1,4 +1,4 @@
-const ThreadController = require('../controllers').threads;
+const ThreadController = require('../controllers/index_controllers').threads;
 
 
 const thread_routes = (app) => {

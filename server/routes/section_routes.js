@@ -1,4 +1,4 @@
-const SectionController = require('../controllers').sections;
+const SectionController = require('../controllers/index_controllers').sections;
 
 
 const section_routes = (app) => {

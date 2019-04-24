@@ -5,7 +5,7 @@ const threadRoutes = require('./thread_routes');
 
 module.exports = (app) => {
 	app.get('/api', (req, res) => res.status(200).send({
-		message: 'Welcome to the User API!',
+		message: 'Welcome to the User API!'
 	}));
 
 	userRoutes(app);
@@ -15,6 +15,10 @@ module.exports = (app) => {
 	// all get request will send index.html for react-router
 	// to handle the route request
 	app.get('*', (req, res) => {
-		res.sendFile(path.resolve(__dirname, '../public', 'index.html'));
+		//res.sendFile(path.resolve(__dirname, '../public', 'index.html'));   this will be the route when we build the react part
+		//res.sendFile(path.resolve(__dirname, 'midas-client', 'build', 'index.html'));
+		res.status(200).send({
+			message: 'Wild Card!'
+		})
 	});
 };
