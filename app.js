@@ -18,12 +18,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use("/testAPI", testAPIRouter);
-
 //Requires DB routes
-require('./server/routes')(app);
+require('./server/routes/index_routes')(app);
 app.get('*', (req, res) => res.status(200).send({
 	message: 'Welcome to the beginning of nothingness.',
 }))
