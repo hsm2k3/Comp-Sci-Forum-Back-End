@@ -29,16 +29,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     }
-  }, );
+  });
+
   Thread.associate = function(models) {
     // associations can be defined here
     Thread.hasMany(models.Post, {
       foreignKey: 'thread_id',
       onDelete: 'CASCADE',
     });
-
-   
-
 
   };
   return Thread;

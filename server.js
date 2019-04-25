@@ -7,9 +7,6 @@ let cors = require("cors");
 
 let server = express();
 
-// view engine setup
-server.set('views', path.join(__dirname, 'views'));
-server.set('view engine', 'jade');
 
 server.use(cors());
 server.use(logger('dev'));
@@ -17,6 +14,7 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 server.use(cookieParser());
 server.use(express.static(path.join(__dirname, 'public')));
+
 
 //  Routes
 require('./server/routes/index_routes')(server);
