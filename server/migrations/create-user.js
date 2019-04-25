@@ -30,11 +30,7 @@ module.exports = {
       last_name: {
         type: Sequelize.STRING
       },
-      date_joined: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        defaultValue: Sequelize.NOW
-      },
+
       last_active: {
         type: Sequelize.DATE
       },

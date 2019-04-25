@@ -18,12 +18,6 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false
       },
-      
-      creation_date: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        defaultValue: Sequelize.NOW
-      },
 
       is_locked: {
         type: Sequelize.BOOLEAN,
