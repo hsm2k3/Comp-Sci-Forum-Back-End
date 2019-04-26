@@ -4,12 +4,12 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     // todo: complete sections seeder
     return queryInterface.bulkInsert('Users', [{
-    	email: 'JohnDoe@test.com',
-    	username: 'John.Doe',
-      is_admin: false,
+    	email: 'XJohnDoe@test.com',
+    	username: 'XJohn.Doe',
+        is_admin: false,
     	first_name: 'John',
     	last_name: 'Doe',
-      picture:'',
+        picture: null,
     	createdAt: Sequelize.literal('NOW()'),
     	updatedAt: Sequelize.literal('NOW()')
     }], {});
@@ -24,6 +24,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-    queryInterface.bulkDelete('Users', null, {});
+    return queryInterface.bulkDelete('Users', null, {});
   }
 };
