@@ -6,7 +6,6 @@ module.exports = {
 		.create({
 			email: req.body.email,
 			username: req.body.username,
-			date_joined: req.body.date_joined,
 			is_admin: req.body.is_admin,
 			first_name: req.body.first_name,
 			last_name: req.body.last_name,
@@ -58,7 +57,7 @@ module.exports = {
 			picture: req.body.picture || user.picture,
 			is_admin: req.body.is_admin || user.is_admin,
 		})
-		.then(() => res.status(200).send(section))
+		.then(() => res.status(200).send(user))
 		.catch((error) => res.status(400).send(error));
 	})
 	},

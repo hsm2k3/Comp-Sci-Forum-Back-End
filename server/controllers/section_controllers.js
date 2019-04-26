@@ -8,7 +8,7 @@ module.exports = {
 			description: req.body.description,
 			user_id: req.body.user_id,
 		})
-		.then(user => res.status(201).send(user))
+		.then(section => res.status(201).send(section))
 		.catch(error => res.status(400).send(error));
 	},
 

@@ -9,7 +9,7 @@ module.exports = {
 			user_id: req.body.user_id,
 			section_id: req.body.section_id,
 		})
-		.then(user => res.status(201).send(user))
+		.then(thread => res.status(201).send(thread))
 		.catch(error => res.status(400).send(error));
 	},
 
@@ -60,7 +60,7 @@ module.exports = {
 			is_stickied: req.body.is_stickied || thread.is_stickied,
 			is_answered: req.body.is_answered || thread.is_answered,
 		})
-		.then(() => res.status(200).send(section))
+		.then(() => res.status(200).send(thread))
 		.catch((error) => res.status(400).send(error));
 	})
 	},
