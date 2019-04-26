@@ -6,7 +6,7 @@ module.exports = {
     return queryInterface.bulkInsert('Sections', [{
     	title: 'Tips & Tricks',
     	description: 'This is a section dedicated to sharing tips and tricks',
-    	user_id: 'Id of the user that created this section'
+    	user_id: 1,
     	createdAt: Sequelize.literal('NOW()'),
     	updatedAt: Sequelize.literal('NOW()')
     }], {});
@@ -21,6 +21,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-    queryInterface.bulkDelete('Sections', null, {});
+    return queryInterface.bulkDelete('Sections', null, {});
   }
 };
