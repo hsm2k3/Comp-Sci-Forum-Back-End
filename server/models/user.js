@@ -25,11 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     last_name: {
       type: DataTypes.STRING,
     },
-    date_joined: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW
-    },
+    
     last_active: {
       type: DataTypes.DATE,
     },
