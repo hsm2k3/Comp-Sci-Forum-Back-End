@@ -1,4 +1,4 @@
-const section = require('../configs/sequelize_config').Section;
+const section = require('../models').Section;
 
 module.exports = {
 	create(req, res) {

@@ -1,4 +1,4 @@
-const thread = require('../configs/sequelize_config').Thread;
+const thread = require('../models').Thread;
 
 module.exports = {
 	create(req, res) {
