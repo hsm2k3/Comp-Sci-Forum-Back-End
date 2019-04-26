@@ -1,5 +1,5 @@
 const userRoutes = require('./user_routes');
-//const postRoutes = require('./post_routes');              todo: uncomment and add call postRoutes when built
+const postRoutes = require('./post_routes');
 const sectionRoutes = require('./section_routes');
 const threadRoutes = require('./thread_routes');
 
@@ -11,6 +11,8 @@ module.exports = (app) => {
 	userRoutes(app);
 	sectionRoutes(app);
 	threadRoutes(app);
+	postRoutes(app);
+
 
 	// all get request will send index.html for react-router
 	// to handle the route request
