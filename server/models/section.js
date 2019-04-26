@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Section.belongsTo(models.User, {
       foreignKey: 'user_id',
-      allowNull: false    
+      allowNull: false
     });
 
   };

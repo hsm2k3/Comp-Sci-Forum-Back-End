@@ -8,8 +8,8 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      
-    
+
+
       content: {
         type: Sequelize.TEXT
       },
@@ -22,7 +22,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      
+
       thread_id: {
         type: Sequelize.INTEGER,
         allowNull: false,

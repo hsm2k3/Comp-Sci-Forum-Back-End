@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define('Post', {
-    
+
     content: {
       type: DataTypes.TEXT
     },
@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TIME,
       defaultValue: DataTypes.NOW
 
-  }, });
+    }, });
   Post.associate = function(models) {
     // associations can be defined here
 

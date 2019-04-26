@@ -9,35 +9,35 @@ module.exports = (sequelize, DataTypes) => {
     },
 
     username: {
-     type: DataTypes.STRING,
-     allowNull: false,
-     unique: true
-   },
-   
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+
     is_admin: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
       allowNull: false,
     },
-    first_name: { 
+    first_name: {
       type: DataTypes.STRING,
     },
     last_name: {
       type: DataTypes.STRING,
     },
     date_joined: {
-    type: DataTypes.DATE,
-    allowNull: false,
-    defaultValue: DataTypes.NOW
-   },
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW
+    },
     last_active: {
-    type: DataTypes.DATE,
-  },
+      type: DataTypes.DATE,
+    },
     picture: {
       type: DataTypes.BLOB,
 
 
-  }, });
+    }, });
   User.associate = function(models) {
     // associations can be defined here
     User.hasMany(models.Thread, {
