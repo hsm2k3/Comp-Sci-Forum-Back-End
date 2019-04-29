@@ -8,7 +8,12 @@
     "seq:migrate": "npx sequelize db:migrate",
     "seq:unmigrate": "npx sequelize db:migrate:undo",
     "seq:seed": "npx sequelize db:seed:all",
-    "seq:unseed": "npx sequelize db:seed:undo:all"
+    "seq:unseed": "npx sequelize db:seed:undo:all",
+    "seq:seed:user": "npx sequelize db:seed --seed 1-demo-user.js",
+    "seq:seed:section": "npx sequelize db:seed --seed 2-demo-sections.js",
+    "seq:seed:thread": "npx sequelize db:seed --seed 3-demo-threads.js",
+    "seq:seed:post": "npx sequelize db:seed --seed 4-demo-posts.js"
+
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",

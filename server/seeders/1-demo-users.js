@@ -9,8 +9,8 @@ module.exports = {
         is_admin: false,
     	first_name: 'John',
     	last_name: 'Doe',
-        picture: null,
-    	createdAt: Sequelize.literal('NOW()'),
+      picture: null,
+      createdAt: Sequelize.literal('NOW()'),
     	updatedAt: Sequelize.literal('NOW()')
     }], {});
 
