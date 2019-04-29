@@ -3,11 +3,18 @@
 module.exports = (sequelize, DataTypes) => {
 
   const Section = sequelize.define('Section', {
+    code: {
+      allowNull: true,
+      type: DataTypes.STRING,
+      unique: true,
+    },
+
     title: {
       allowNull: false,
       type: DataTypes.STRING,
       unique: true
     },
+
     description: {
       type: DataTypes.TEXT,
     },
