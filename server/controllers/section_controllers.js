@@ -23,7 +23,7 @@ module.exports = {
 		.catch(error => res.status(400).send(error));
 	},
 
-	//List specific section
+	//List specific section by id
 	retrieve(req, res) {
 		return section
 		.findById(req.params.sectionId, {
@@ -43,6 +43,24 @@ module.exports = {
 		.catch(error => res.status(400).send(error));
 	},
 
+	//Get section by code
+	searchByCode(req, res) {
+		return section
+			.findOne({
+				where: {
+					code: req.params.sectionCode
+				}
+			})
+			.then(section => {
+				if(!section) {
+					return res.status(404).send({
+						message: 'Section Not Found',
+					});
+				}
+				return res.status(200).send(section);
+			})
+			.catch(error => res.status(400).send(error));
+	},
 
 	//Update a section
 	update(req, res) {
