@@ -62,6 +62,25 @@ module.exports = {
 			.catch(error => res.status(400).send(error));
 	},
 
+	//Get section by title
+	searchByTitle(req, res) {
+		return section
+			.findOne({
+				where: {
+					title: req.params.sectionTitle
+				}
+			})
+			.then(section => {
+				if(!section) {
+					return res.status(404).send({
+						message: 'Section Not Found',
+					});
+				}
+				return res.status(200).send(section);
+			})
+			.catch(error => res.status(400).send(error));
+	},
+
 	//Update a section
 	update(req, res) {
 		return section
