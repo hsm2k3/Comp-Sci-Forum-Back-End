@@ -1,4 +1,5 @@
 const thread = require('../models').Thread;
+const post = require('../models').Post;
 
 module.exports = {
 	create(req, res) {
@@ -21,25 +22,30 @@ module.exports = {
 		.catch(error => res.status(400).send(error));
 	},
 
-	//List specific thread
-	retrieve(req, res) {
+//Get section by id
+	searchById(req, res) {
 		return thread
-		.findById(req.params.threadId, {
-			include: [{
-				model: Post,
-				as: 'Posts',
-			}],
-		})
-		.then(thread => {
-			if(!thread) {
-				return res.status(404).send({
-					message: 'Thread Not Found',
-				});
-			}
-			return res.status(200).send(thread);
-		})
-		.catch(error => res.status(400).send(error));
+			.findOne({
+
+				include: [{
+						model: post,
+					}],
+				where: {
+					id: req.params.threadId,
+				},
+
+			})
+			.then(thread => {
+				if(!thread) {
+					return res.status(404).send({
+						message: 'Thread Not Found',
+					});
+				}
+				return res.status(200).send(thread);
+			})
+			.catch(error => res.status(400).send(error));
 	},
+
 
 //Update a thread's information
 	update(req, res) {

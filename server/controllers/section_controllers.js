@@ -1,10 +1,13 @@
 const section = require('../models').Section;
+const thread = require('../models').Thread;
+const post = require('../models').Post;
 
 module.exports = {
 	create(req, res) {
 		return section
 		.create({
 			title: req.body.title,
+			code: req.body.code,
 			description: req.body.description,
 			user_id: req.body.user_id,
 		})
@@ -23,24 +26,31 @@ module.exports = {
 		.catch(error => res.status(400).send(error));
 	},
 
-	//List specific section by id
-	retrieve(req, res) {
+
+	//Get section by id
+	searchById(req, res) {
 		return section
-		.findById(req.params.sectionId, {
-			include: [{
-				model: Thread,
-				as: 'Threads',
-			}],
-		})
-		.then(section => {
-			if(!section) {
-				return res.status(404).send({
-					message: 'Section Not Found',
-				});
-			}
-			return res.status(200).send(section);
-		})
-		.catch(error => res.status(400).send(error));
+			.findOne({
+				where: {
+					id: req.params.sectionId,
+				},
+
+				include:[
+					{
+						model: thread,
+					}
+				],
+				
+			})
+			.then(section => {
+				if(!section) {
+					return res.status(404).send({
+						message: 'Section Not Found',
+					});
+				}
+				return res.status(200).send(section);
+			})
+			.catch(error => res.status(400).send(error));
 	},
 
 	//Get section by code
@@ -84,7 +94,11 @@ module.exports = {
 	//Update a section
 	update(req, res) {
 		return section
-		.findById(req.params.sectionId)
+		.findOne({
+				where: {
+					id: req.params.sectionId,
+				},
+			})
 		.then(section => {
 			if(!section) {
 				return res.status(404).send(
@@ -104,7 +118,11 @@ module.exports = {
 	//Destroy a specific section
 	destroy(req, res) {
 		return section
-		.findById(req.params.sectionId)
+				.findOne({
+				where: {
+					id: req.params.sectionId,
+				},
+			})
 		.then(section => {
 			if(!section) {
 				return res.status(400).send({

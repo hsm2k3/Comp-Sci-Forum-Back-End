@@ -1,4 +1,7 @@
 const user = require('../models/').User;
+const sections = require('../models/').Section;
+const threads = require('../models/').Thread;
+const posts = require('../models/').Post;
 
 module.exports = {
 	create(req, res) {
@@ -22,24 +25,31 @@ module.exports = {
 		.catch(error => res.status(400).send(error));
 },
 
-//List specific user
-	retrieve(req, res) {
+//Get user by id
+	searchById(req, res) {
 		return user
-		.findById(req.params.userId, {
-			include: [{
-				model: Thread,
-				as: 'Threads',
-			}],
-		})
-		.then(user => {
-			if(!user) {
-				return res.status(404).send({
-					message: 'User Not Found',
-				});
-			}
-			return res.status(200).send(user);
-		})
-		.catch(error => res.status(400).send(error));
+			.findOne({
+				where: {
+					id: req.params.userId,
+				},
+
+				include:[
+					{
+						all: true,
+						nested: true
+					}
+				],
+				
+			})
+			.then(user => {
+				if(!user) {
+					return res.status(404).send({
+						message: 'User Not Found',
+					});
+				}
+				return res.status(200).send(user);
+			})
+			.catch(error => res.status(400).send(error));
 	},
 
 //Update a user's information

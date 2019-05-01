@@ -19,25 +19,33 @@ module.exports = {
 		.catch(error => res.status(400).send(error));
 },
 
-//List specific post
-	retrieve(req, res) {
+//Get post by id
+	searchById(req, res) {
 		return post
-		.findById(req.params.postId)
-		.then(post => {
-			if(!post) {
-				return res.status(404).send({
-					message: 'Post Not Found',
-				});
-			}
-			return res.status(200).send(post);
-		})
-		.catch(error => res.status(400).send(error));
+			.findOne({
+				where: {
+					id: req.params.postId,
+				},				
+			})
+			.then(post => {
+				if(!post) {
+					return res.status(404).send({
+						message: 'Post Not Found',
+					});
+				}
+				return res.status(200).send(post);
+			})
+			.catch(error => res.status(400).send(error));
 	},
 
 //Update a user's information
 	update(req, res) {
 		return post
-		.findById(req.params.postId)
+		.findOne({
+				where: {
+					id: req.params.postId,
+				},				
+			})
 		.then(post => {
 			if(!post) {
 				return res.status(404).send(
@@ -56,7 +64,11 @@ module.exports = {
 	//Destroy a specific user
 	destroy(req, res) {
 		return post
-		.findById(req.params.postId)
+		.findOne({
+				where: {
+					id: req.params.postId,
+				},				
+			})
 		.then(post => {
 			if(!post) {
 				return res.status(400).send({
