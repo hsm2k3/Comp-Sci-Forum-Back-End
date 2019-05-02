@@ -1,4 +1,4 @@
-module.exports = app.use((req, res, next) => {
+module.exports = (app) => app.use((req, res, next) => {
 
     //allow access to our API with these urls
     let allowedOrigins = [
@@ -6,7 +6,6 @@ module.exports = app.use((req, res, next) => {
         'http://localhost:3001',
         'http://127.0.0.1:3000',
         'http://localhost:3000',
-        'https://aqueous-castle-51032.herokuapp.com'
     ];
 
     let origin = req.headers.origin;
