@@ -39,7 +39,7 @@ module.exports = {
 					{
 						model: thread,
 					}
-				],
+				]
 				
 			})
 			.then(section => {
@@ -59,7 +59,12 @@ module.exports = {
 			.findOne({
 				where: {
 					code: req.params.sectionCode
-				}
+				},
+				include:[
+					{
+						model: thread,
+					}
+				]
 			})
 			.then(section => {
 				if(!section) {
@@ -78,7 +83,12 @@ module.exports = {
 			.findOne({
 				where: {
 					title: req.params.sectionTitle
-				}
+				},
+				include:[
+					{
+						model: thread,
+					}
+				]
 			})
 			.then(section => {
 				if(!section) {
