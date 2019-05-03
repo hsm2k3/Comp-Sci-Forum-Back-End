@@ -1,4 +1,4 @@
-module.exports = (app) => app.use((req, res, next) => {
+module.exports = () => (req, res, next) => {
 
     //allow access to our API with these urls
     let allowedOrigins = [
@@ -30,4 +30,4 @@ module.exports = (app) => app.use((req, res, next) => {
 
     //run controller logic
     next();
-});
+};
