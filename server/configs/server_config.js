@@ -42,8 +42,5 @@ module.exports = (app, express, passport) => {
 
 
     //  passport middleware
-    require('../middleware/passport')(app);
-
-    //  cors middleware
-    require('../middleware/cors')(app);
+    require('../middleware/passport')(passport);
 };
