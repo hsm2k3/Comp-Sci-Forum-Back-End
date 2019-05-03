@@ -13,7 +13,6 @@
     "seq:seed:section": "npx sequelize db:seed --seed 2-demo-sections.js",
     "seq:seed:thread": "npx sequelize db:seed --seed 3-demo-threads.js",
     "seq:seed:post": "npx sequelize db:seed --seed 4-demo-posts.js"
-
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
@@ -23,6 +22,8 @@
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "pg": "^7.9.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^5.3.5"

@@ -13,6 +13,14 @@ module.exports = (app) => {
 	threadRoutes(app);
 	postRoutes(app);
 
+	app.post('/login',
+			passport.authenticate('local',
+				{ successRedirect: '/profile', failureRedirect: '/login' }),
+				(req, res) => {
+					// If this function gets called, authentication was successful.
+					// `req.user` contains the authenticated user.
+					res.redirect('/users/' + req.user.username);
+				});
 
 	// all get request will send index.html for react-router
 	// to handle the route request
