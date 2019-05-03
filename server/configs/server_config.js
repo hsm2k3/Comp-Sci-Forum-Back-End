@@ -5,13 +5,15 @@ const
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     logger = require('morgan'),
-    cors = require("cors");
+    cors = require("cors"),
+    cors_config = require('../middleware/cors');
 
 
 module.exports = (app, express, passport) => {
     app.use(express.static(path.join(__dirname, 'public')));
     app.set('view engine', 'ejs');
     app.use(cors());
+    app.use(cors_config());
     app.use(logger('dev'));
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
