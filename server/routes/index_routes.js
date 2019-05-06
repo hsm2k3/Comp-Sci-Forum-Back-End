@@ -2,8 +2,19 @@ const userRoutes = require('./user_routes');
 const postRoutes = require('./post_routes');
 const sectionRoutes = require('./section_routes');
 const threadRoutes = require('./thread_routes');
+const authorizationRoutes = require('./authorization_routes');
 
 module.exports = (app, passport) => {
+	app.get('/', (req, res) => {
+		if(req.session.page_views){
+			req.session.page_views++;
+			res.send("You visited this page " + req.session.page_views + " times");
+		} else {
+			req.session.page_views = 1;
+			res.send("Welcome to this page for the first time!");
+		}
+	});
+
 	app.get('/api', (req, res) => res.status(200).send({
 		message: 'Welcome to the User API!'
 	}));
@@ -15,23 +26,7 @@ module.exports = (app, passport) => {
 		postRoutes(app);
 	//	End API routes
 
-	app.post(
-		'/login',
-		passport.authenticate(
-	'local',
-	{
-				successRedirect: '/profile',
-				failureRedirect: '/login',
-				failureFlash: false
-			}
-		),
-		(req, res) => {
-			// If this function gets called, authentication was successful.
-			// `req.user` contains the authenticated user.
-			console.log('Login authenticated successfully');
-			res.redirect('/profile' + req.user.username);
-		}
-	);
+	authorizationRoutes(app, passport);
 
 	// all get request will send index.html for react-router
 	// to handle the route request

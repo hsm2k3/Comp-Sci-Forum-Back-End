@@ -1,6 +1,6 @@
 const
     createError = require('http-errors'),
-    session = require('express-session'),
+    expressSession = require('express-session'),
     path = require('path'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
@@ -19,7 +19,7 @@ module.exports = (app, express, passport) => {
     app.use(express.urlencoded({ extended: false }));
     app.use(cookieParser());
     app.use(bodyParser());
-    app.use(session({ secret: 'how much wood could a wood chuck chuck if a wood chuck could chuck wood?' }));
+    app.use(expressSession({ secret: 'how much wood could a wood chuck chuck if a wood chuck could chuck wood?' }));
     app.use(passport.initialize());
     app.use(passport.session());
 
