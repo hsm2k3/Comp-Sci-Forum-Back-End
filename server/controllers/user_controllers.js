@@ -9,6 +9,7 @@ module.exports = {
 		.create({
 			email: req.body.email,
 			username: req.body.username,
+			password:req.body.password,
 			is_admin: req.body.is_admin,
 			first_name: req.body.first_name,
 			last_name: req.body.last_name,
@@ -40,6 +41,33 @@ module.exports = {
 					}
 				],
 				
+			})
+			.then(user => {
+				if(!user) {
+					return res.status(404).send({
+						message: 'User Not Found',
+					});
+				}
+				return res.status(200).send(user);
+			})
+			.catch(error => res.status(400).send(error));
+	},
+
+	//Get user by id
+	searchByEmail(req, res) {
+		return user
+			.findOne({
+				where: {
+					email: req.params.email,
+				},
+
+				include:[
+					{
+						all: true,
+						nested: true
+					}
+				],
+
 			})
 			.then(user => {
 				if(!user) {

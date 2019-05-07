@@ -1,21 +1,40 @@
-const LocalStrategy = require('passport-local').Strategy;
+const
+    LocalStrategy = require('passport-local').Strategy,
+    env = process.env.NODE_ENV || 'development',
+    config = require(__dirname + '/../configs/database_config.json')[env],
+    bcrypt = require('bcrypt'),
+    Sequelize = require('sequelize');
+    User = require('../models/user');
+
+let sequelize = null;
+
+if (config.use_env_variable) {
+    sequelize = new Sequelize(process.env[config.use_env_variable], config);
+} else {
+    sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
+
+passwordsMatch = (passwordSubmitted, storedPassword) => {
+    return bcrypt.compareSync(passwordSubmitted, storedPassword);
+};
+
 
 module.exports = (passport) => {
 
     passport.use(new LocalStrategy(
-        (username, password, done) => {
-            User.findOne({ email: username }, (err, user) => {
-                if (err) { return done(err); }
-                if (!user) {
-                    return done(null, false, { message: 'Incorrect username.' });
-                }
-                if (!user.validPassword(password)) {
+        (email, password, done) => {
+            User.findOne({
+                where: { email: email },
+            }).then((user) => {
+                console.log(user);
+                if (!user || passwordsMatch(password, user.password) === false) {
                     return done(null, false, { message: 'Incorrect password.' });
                 }
-                return done(null, user);
+
+                return done(null, user, { message: 'Successfully Logged In!' });
             });
-        }
-    ));
+        })
+    );
 
     passport.serializeUser((user, done) => {
         done(null, user.id);
@@ -29,11 +48,11 @@ module.exports = (passport) => {
 
     passport.checkAuthentication = (req, res, next) => {
         if(req.isAuthenticated()){
-
+            console.log("Authentication Successful");
             //req.isAuthenticated() will return true if user is logged in
             next();
         } else{
-            console.log("HAHA YOU SUCK AT CODING")
+            console.log("Authentication Unsuccessful");
             res.redirect("/login");
         }
     };

@@ -1,4 +1,6 @@
 'use strict';
+const bcrypt = require('bcrypt');
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
 
@@ -12,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true
+    },
+
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
 
     is_admin: {
@@ -44,5 +51,15 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'user_id',
     });
   };
+
+  User.beforeCreate((user) =>
+      new sequelize.Promise((resolve) => {
+        bcrypt.hash(user.password, 10, (err, hashedPassword) => {
+          resolve(hashedPassword);
+        });
+      }).then((hashedPassword) => {
+        user.password = hashedPassword;
+      })
+  );
   return User;
 };
