@@ -1,18 +1,25 @@
 'use strict';
-const bcrypt = require('bcrypt');
+const
+    bcrypt = require('bcrypt'),
+    model = require('../models');
 
 
-const encryptPassword = (seedPassword) => {
-  bcrypt.hash(seedPassword, 10, (err, hashedPassword) => {
-      seedPassword = hashedPassword;
-    });
-  console.log("demo-user-pass: ", seedPassword);
-  return seedPassword;
-};
+
+// const encryptPassword = (seedPassword) => {
+//   bcrypt.hash(seedPassword, 10, (err, hashedPassword) => {
+//       return hashedPassword;
+//     })
+//       .then((hashedPassword) => {return hashedPassword;})
+// };
+
+  const encryptPassword = (password) => {
+      return bcrypt.hashSync(password, 10);
+  };
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    // todo: complete sections seeder
+
+
     return queryInterface.bulkInsert('Users', [{
     	email: 'Yussef.Saidi@test.com',
     	username: 'Yussef.Saidi',
@@ -22,7 +29,7 @@ module.exports = {
     	last_name: 'Saidi',
         picture: null,
         createdAt: Sequelize.literal('NOW()'),
-    	updatedAt: Sequelize.literal('NOW()')
+    	updatedAt: Sequelize.literal('NOW()'),
     },
 
     {

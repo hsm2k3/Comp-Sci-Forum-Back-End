@@ -4,7 +4,8 @@ const
     config = require(__dirname + '/../configs/database_config.json')[env],
     bcrypt = require('bcrypt'),
     Sequelize = require('sequelize');
-    User = require('../models/user');
+    model = require('../models/');
+    User = model.users;
 
 let sequelize = null;
 
@@ -22,10 +23,18 @@ passwordsMatch = (passwordSubmitted, storedPassword) => {
 module.exports = (passport) => {
 
     passport.use(new LocalStrategy(
+        // (email, password, done) => {
+        {
+            usernameField: 'email'
+        },
         (email, password, done) => {
-            User.findOne({
-                where: { email: email },
-            }).then((user) => {
+            const req = {req:{
+              params:{
+                  email: email
+              }
+            }};
+            console.log("REQ: ", req);
+            User.searchByEmail(req).then((user) => {
                 console.log(user);
                 if (!user || passwordsMatch(password, user.password) === false) {
                     return done(null, false, { message: 'Incorrect password.' });
@@ -33,6 +42,16 @@ module.exports = (passport) => {
 
                 return done(null, user, { message: 'Successfully Logged In!' });
             });
+            // User.findOne({
+            //     where: { email: email },
+            // }).then((user) => {
+            //     console.log(user);
+            //     if (!user || passwordsMatch(password, user.password) === false) {
+            //         return done(null, false, { message: 'Incorrect password.' });
+            //     }
+            //
+            //     return done(null, user, { message: 'Successfully Logged In!' });
+            // });
         })
     );
 

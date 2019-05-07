@@ -79,6 +79,7 @@ module.exports = {
 
 	//Get section by title
 	searchByTitle(req, res) {
+		console.log('searchByTitle: ', {req.params});
 		return section
 			.findOne({
 				where: {
