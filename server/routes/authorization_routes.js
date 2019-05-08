@@ -1,28 +1,45 @@
 const model = require('../models');
 const User = model.users;
+const express = require('express');
+const router = express.Router();
 
 const authorization_routes = (app, passport) => {
-
-    app.route('/login')
-        .post(passport.authenticate('local', {
-            successRedirect: '/profile',
-            failureRedirect: '/auth/error'
-        }),
+    router.post('/login',
+        passport.authenticate('local', { failureRedirect: '/auth/error' }),
         (req, res) => {
-            const
-                email = req.body.email,
-                password = req.body.password;
+            console.log("Hello from /login route");
+            return res.status(200).json({
+                id: req.user.id,
+                firstName: req.user.firstName,
+                lastName: req.user.lastName,
+                email: req.user.email,
+            });
+        });
 
-            User.findByEmail({ where: { email: email } }).then(function (user) {
-                if (!user) {
-                    res.redirect('/login');
-                } else if (!user.validPassword(password)) {
-                    res.redirect('/login');
-                } else {
-                    req.session.user = user.dataValues;
-                    res.redirect('/profile');
-                }
-            })});
+    // router.route('/login')
+    //     .post(passport.authenticate('local', {
+    //             successRedirect: '/profile',
+    //             failureRedirect: '/login'
+    //         }),
+    //         (req, res) => {
+    //             const
+    //                 email = req.body.email,
+    //                 password = req.body.password;
+    //
+    //             User.findOne({ where: { email: email } }).then(function (user) {
+    //                 if (!user) {
+    //                     console.log("DEBUG: No user",user);
+    //                     res.redirect('/login');
+    //                 } else if (!user.validPassword(password)) {
+    //                     console.log("DEBUG: Bad password",user,password);
+    //                     res.redirect('/login');
+    //                 } else {
+    //                     req.session.user = user.dataValues;
+    //                     res.redirect('/profile');
+    //                 }
+    //             })
+    //         }
+    //     );
 
     // app.post('/login',
     //     passport.authenticate('local', {

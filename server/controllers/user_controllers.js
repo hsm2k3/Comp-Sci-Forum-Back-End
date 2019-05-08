@@ -1,7 +1,5 @@
 const user = require('../models/').User;
-const sections = require('../models/').Section;
-const threads = require('../models/').Thread;
-const posts = require('../models/').Post;
+
 
 module.exports = {
 	create(req, res) {
@@ -31,7 +29,7 @@ module.exports = {
 		return user
 			.findOne({
 				where: {
-					id: req.params.userId,
+					id: req.params.userId
 				},
 
 				include:[
@@ -53,7 +51,7 @@ module.exports = {
 			.catch(error => res.status(400).send(error));
 	},
 
-	//Get user by id
+//Get user by id
 	searchByEmail(req, res) {
 		return user
 			.findOne({
@@ -80,7 +78,7 @@ module.exports = {
 			.catch(error => res.status(400).send(error));
 	},
 
-//Update a user's information
+	//Update a user's information
 	update(req, res) {
 		return user
 		.findById(req.params.userId)

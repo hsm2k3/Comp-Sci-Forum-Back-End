@@ -37,18 +37,39 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
     },
     picture: {
-      type: DataTypes.BLOB,
-
-
+      type: DataTypes.BLOB
     }
   },
-      {
-        instanceMethods: {
-          validPassword: function(password) {
-            return bcrypt.compareSync(password, this.password);
-          }
-        }
-      });
+    {
+       classMethods:{
+         validPassword: function(password, passwd, done, user){
+            bcrypt.compareSync(password, passwd, function(err, isMatch){
+              if(err) console.log(err);
+              if(isMatch){
+                return done(null, user)
+              }
+              else{
+                return done(null, false)
+              }
+            })
+         },
+         hashPassword: function(password){
+           return bcrypt.hash(password, 10);
+         }
+       }
+    }
+
+  );
+
+
+  // User.prototype.hashPassword = function(password){
+  //   return bcrypt.hash(user.password, 10);
+  // };
+  //
+  // User.prototype.passwordsMatch = (passwordSubmitted) => {
+  //   return bcrypt.compareSync(passwordSubmitted, this.password);
+  // };
+
   User.associate = function(models) {
     // associations can be defined here
     User.hasMany(models.Thread, {

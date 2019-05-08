@@ -1,20 +1,10 @@
 'use strict';
-const
-    bcrypt = require('bcrypt'),
-    model = require('../models');
+const bcrypt = require('bcrypt');
 
 
-
-// const encryptPassword = (seedPassword) => {
-//   bcrypt.hash(seedPassword, 10, (err, hashedPassword) => {
-//       return hashedPassword;
-//     })
-//       .then((hashedPassword) => {return hashedPassword;})
-// };
-
-  const encryptPassword = (password) => {
-      return bcrypt.hashSync(password, 10);
-  };
+const encryptPassword = (password) => {
+    return bcrypt.hashSync(password, 10);
+};
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
