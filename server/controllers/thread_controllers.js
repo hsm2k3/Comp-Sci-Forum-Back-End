@@ -26,14 +26,14 @@ module.exports = {
 	searchById(req, res) {
 		return thread
 			.findOne({
-
-				include: [{
-						model: post,
-					}],
 				where: {
-					id: req.params.threadId,
+					id: req.params.threadId
 				},
-
+				include: [
+					{
+						model: post
+					}
+				]
 			})
 			.then(thread => {
 				if(!thread) {
