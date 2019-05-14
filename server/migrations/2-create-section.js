@@ -12,7 +12,6 @@ module.exports = {
       code: {
         allowNull: true,
         type: Sequelize.STRING,
-        unique: true
       },
 
       title: {

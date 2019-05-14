@@ -13,6 +13,30 @@ module.exports = {
     	updatedAt: Sequelize.literal('NOW()')
     },
 
+        {
+      content: 'Git saved my ass',
+      thread_id: 1, 
+      user_id: 3,
+      createdAt: Sequelize.literal('NOW()'),
+      updatedAt: Sequelize.literal('NOW()')
+    },
+
+{
+          content: 'Git saved my ass',
+      thread_id: 1, 
+      user_id: 3,
+      createdAt: Sequelize.literal('NOW()'),
+      updatedAt: Sequelize.literal('NOW()')
+    },
+
+{
+          content: 'I was unsure about Git, but it saved my ass',
+      thread_id: 1, 
+      user_id: 4,
+      createdAt: Sequelize.literal('NOW()'),
+      updatedAt: Sequelize.literal('NOW()')
+    },
+
     {
       content: 'This is a very cool tutorial, I have been trying to learn Git for my CSC 430 class.',
       thread_id: 1, 

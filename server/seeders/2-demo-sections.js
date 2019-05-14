@@ -7,7 +7,7 @@ module.exports = {
     {
       code: '',
     	title: 'Tips & Tricks', 
-    	description: 'Dedicated to the Algorithms class at CSI, and everything one needs to be prepared for technical job interviews. ',
+    	description: 'Dedicated to all kinds of tips and tricks for people that want to improve and learn more.',
     	user_id: 1,
     	createdAt: Sequelize.literal('NOW()'),
     	updatedAt: Sequelize.literal('NOW()')
@@ -23,7 +23,7 @@ module.exports = {
     },
 
     {
-      code: 'CSC326',
+      code: 'CSC330',
       title: 'Software Design', 
       description: 'The introductory software design class at CSI. Learn all about sofware life cycle and good design procedures.',
       user_id: 2,
@@ -32,7 +32,7 @@ module.exports = {
     },
 
      {
-      code: 'CSC330',
+      code: 'CSC326',
       title: 'Data Structures', 
       description: 'Dedicated to the data structures class at CSI, and all the help to learn everything about binary trees, hashmaps and all the rest. ',
       user_id: 2,
@@ -52,6 +52,62 @@ module.exports = {
     {
       code: 'CSC430',
       title: 'Software Engineering', 
+      description: 'Dedicated to the Software Engineering class at CSI, and all you need to excel in the field of software development. ',
+      user_id: 1,
+      createdAt: Sequelize.literal('NOW()'),
+      updatedAt: Sequelize.literal('NOW()')
+    },
+     {
+      code: '',
+      title: 'Test1', 
+      description: 'Dedicated to the Software Engineering class at CSI, and all you need to excel in the field of software development. ',
+      user_id: 1,
+      createdAt: Sequelize.literal('NOW()'),
+      updatedAt: Sequelize.literal('NOW()')
+    },
+     {
+      code: '',
+      title: 'Test2', 
+      description: 'Dedicated to the Software Engineering class at CSI, and all you need to excel in the field of software development. ',
+      user_id: 1,
+      createdAt: Sequelize.literal('NOW()'),
+      updatedAt: Sequelize.literal('NOW()')
+    },
+     {
+      code: '',
+      title: 'Test3', 
+      description: 'Dedicated to the Software Engineering class at CSI, and all you need to excel in the field of software development. ',
+      user_id: 1,
+      createdAt: Sequelize.literal('NOW()'),
+      updatedAt: Sequelize.literal('NOW()')
+    },
+     {
+      code: '',
+      title: 'Test4', 
+      description: 'Dedicated to the Software Engineering class at CSI, and all you need to excel in the field of software development. ',
+      user_id: 1,
+      createdAt: Sequelize.literal('NOW()'),
+      updatedAt: Sequelize.literal('NOW()')
+    },
+     {
+      code: '',
+      title: 'Test5', 
+      description: 'Dedicated to the Software Engineering class at CSI, and all you need to excel in the field of software development. ',
+      user_id: 1,
+      createdAt: Sequelize.literal('NOW()'),
+      updatedAt: Sequelize.literal('NOW()')
+    },
+     {
+      code: '',
+      title: 'Test6', 
+      description: 'Dedicated to the Software Engineering class at CSI, and all you need to excel in the field of software development. ',
+      user_id: 2,
+      createdAt: Sequelize.literal('NOW()'),
+      updatedAt: Sequelize.literal('NOW()')
+    },
+     {
+      code: '',
+      title: 'Test7', 
       description: 'Dedicated to the Software Engineering class at CSI, and all you need to excel in the field of software development. ',
       user_id: 1,
       createdAt: Sequelize.literal('NOW()'),
